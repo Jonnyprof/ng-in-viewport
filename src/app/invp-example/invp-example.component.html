@@ -8,8 +8,8 @@
   -->
 
 <section #firstSection>
-  <ng-container *ngFor="let element of elements; odd as odd">
-    <div class="item" [class.is-odd]="odd" inViewport [inViewportOptions]="{ root: firstSection }" (inViewportAction)="handleAction($event)">
+  <ng-container *ngFor="let element of elements; odd as odd; index as i">
+    <div class="item" [class.is-odd]="odd" inViewport [inViewportOptions]="{ root: firstSection, rootMargin: getRootMargin(i), checkFn: checkFn }" (inViewportAction)="handleAction($event)">
       {{ element }}
     </div>
   </ng-container>

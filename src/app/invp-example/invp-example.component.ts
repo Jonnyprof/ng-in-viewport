@@ -25,8 +25,18 @@ export class InvpExampleComponent implements OnInit {
       .map((__, idx) => idx + 1);
   }
 
-  handleAction({ target = null, visible = false }) {
-    this.renderer.addClass(target, visible ? 'active' : 'inactive');
-    this.renderer.removeClass(target, visible ? 'inactive' : 'active');
+  handleAction({target = null, visible = false}) {
+    // this.renderer.addClass(target, visible ? 'active' : 'inactive');
+    // this.renderer.removeClass(target, visible ? 'inactive' : 'active');
+  }
+
+  getRootMargin(i: number) {
+    return `-${i * 10}px 0px 0px 0px`;
+  }
+
+  checkFn(entry: IntersectionObserverEntry, {config}) {
+    console.log('hash:', config.hash, 'rootMargin:', config.rootMargin);
+
+    return {target: {}};
   }
 }
